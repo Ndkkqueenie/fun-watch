@@ -7,6 +7,7 @@ import SearchBar from "@/components/SearchBar";
 import MovieList from "@/components/MovieList";
 import ErrorMessage from "@/components/ErrorMessage";
 import Loader from "@/components/Loader";
+import Pagination from "@/components/Pagination";
 
 interface Movie {
   id: number;
@@ -75,25 +76,7 @@ export default function Home() {
           {searchActive ? "Search Results" : "Trending Movies"}
         </h2>
         <MovieList movies={movies} />
-
-        {/* Pagination (only for trending movies) */}
-        {!searchActive && (
-          <div className="flex gap-4 mt-4">
-            <button
-              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-              className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 disabled:opacity-50"
-              disabled={page === 1}
-            >
-              Previous
-            </button>
-            <button
-              onClick={() => setPage((prev) => prev + 1)}
-              className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
-            >
-              Next
-            </button>
-          </div>
-        )}
+        {!searchActive && <Pagination page={page} setPage={setPage} />}
       </main>
     </div>
   );
