@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import MovieList from "@/components/MovieList";
 import ErrorMessage from "@/components/ErrorMessage";
+import Loader from "@/components/Loader";
 
 interface Movie {
   id: number;
@@ -43,14 +44,8 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full max-w-2xl">
         <Header />
         <SearchBar onSearch={searchMovies} />
-
-        {/* Loading State */}
-        {loading && <p className="text-gray-500">Loading...</p>}
-
-        {/* Error Message */}
+        {loading && <Loader />}
         {error && <ErrorMessage message={error} />}
-
-        {/* Display Search Results */}
         <MovieList movies={movies} />
       </main>
     </div>
