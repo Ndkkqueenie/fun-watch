@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import MovieList from "@/components/MovieList";
+import ErrorMessage from "@/components/ErrorMessage";
 
 interface Movie {
   id: number;
@@ -47,7 +48,7 @@ export default function Home() {
         {loading && <p className="text-gray-500">Loading...</p>}
 
         {/* Error Message */}
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <ErrorMessage message={error} />}
 
         {/* Display Search Results */}
         <MovieList movies={movies} />
