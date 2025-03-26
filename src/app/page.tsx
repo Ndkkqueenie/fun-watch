@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
+import MovieList from "@/components/MovieList";
 
 interface Movie {
   id: number;
@@ -49,18 +50,7 @@ export default function Home() {
         {error && <p className="text-red-500">{error}</p>}
 
         {/* Display Search Results */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
-          {movies.map((movie) => (
-            <div key={movie.id} className="bg-gray-800 text-white p-4 rounded-lg">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="rounded-md"
-              />
-              <h3 className="mt-2 text-sm font-semibold">{movie.title}</h3>
-            </div>
-          ))}
-        </div>
+        <MovieList movies={movies} />
       </main>
     </div>
   );
