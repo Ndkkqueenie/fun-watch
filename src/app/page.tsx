@@ -58,7 +58,7 @@ export default function Home() {
         params: { api_key: API_KEY, query, page: 1 },
       });
       setMovies(response.data.results);
-    } catch (err) {
+    } catch {
       setError("Failed to fetch movies. Please try again.");
     } finally {
       setLoading(false);
